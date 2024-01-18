@@ -1,4 +1,4 @@
-const camelize = require('camelize');
+// const camelize = require('camelize');
 
 const connection = require('./connection');
 
@@ -13,7 +13,7 @@ async function findAll() {
     ON products.sale_id = sales.id
   ORDER BY sale_id, product_id`);
 
-  return camelize(sales);
+  return sales;
 }
 
 async function findById(id) {
@@ -27,7 +27,7 @@ async function findById(id) {
     WHERE sales.id = ?
   ORDER BY sale_id, product_id`, [id]);
 
-  return camelize(sale);
+  return sale;
 }
 
 module.exports = {
