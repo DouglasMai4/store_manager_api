@@ -11,7 +11,7 @@ const findById = async (id) => {
 
   let data = await productsModel.findById(id);
 
-  if (!data.length) {
+  if (!data) {
     status = 404;
     data = { message: 'Product not found' };
   }

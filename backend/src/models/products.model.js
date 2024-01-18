@@ -16,7 +16,7 @@ const findById = async (id) => {
     [id],
   );
 
-  return product;
+  return product[0];
 };
 
 module.exports = {
