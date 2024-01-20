@@ -31,7 +31,7 @@ describe('Products service test', function () {
 
     expect(status).to.be.an('number');
     expect(status).to.be.equal(200);
-    expect(data).to.be.an('array');
+    expect(data).to.be.an('object');
     expect(data).to.be.deep.equal(productsMock.productIdRes);
   });
 

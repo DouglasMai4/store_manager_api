@@ -27,7 +27,7 @@ describe('Products model test', function () {
 
     const response = await productsModel.findById(1);
 
-    expect(response).to.be.an('array');
+    expect(response).to.be.an('object');
     expect(response).to.be.deep.equal(productsMock.productIdRes);
   });
 });

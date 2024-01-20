@@ -11,7 +11,7 @@ const findById = async (id) => {
 
   let data = await productsModel.findById(id);
 
-  if (!data) {
+  if (!data || !Object.keys(data).length) {
     status = 404;
     data = { message: 'Product not found' };
   }
@@ -19,7 +19,14 @@ const findById = async (id) => {
   return { status, data };
 };
 
+const add = async (name) => {
+  const data = await productsModel.add(name);
+
+  return { status: 201, data };
+};
+
 module.exports = {
   findAll,
   findById,
+  add,
 };

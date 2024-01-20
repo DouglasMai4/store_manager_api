@@ -19,12 +19,10 @@ const productIdData = [[
   },
 ]];
 
-const productIdRes = [
-  {
-    id: 1,
-    name: 'Martelo de Thor',
-  },
-];
+const productIdRes = {
+  id: 1,
+  name: 'Martelo de Thor',
+};
 
 module.exports = {
   allProductsData,
