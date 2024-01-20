@@ -9,7 +9,9 @@ const nameVerify = (req, res, next) => {
     }
   }
 
-  return res.status(400).json({ message: '"name" is required' });
+  if (!name) {
+    return res.status(400).json({ message: '"name" is required' });
+  }
 };
 
 module.exports = {
