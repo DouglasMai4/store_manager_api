@@ -2,12 +2,13 @@ const route = require('express').Router();
 const bodyParser = require('body-parser');
 
 const { productsController } = require('../controllers');
+const { productsMiddleware } = require('../middlewares');
 
 // GET
 route.get('/', productsController.findAll);
 route.get('/:id', productsController.findById);
 
 // POST
-route.post('/', bodyParser.json(), productsController.add);
+route.post('/', bodyParser.json(), productsMiddleware.nameVerify, productsController.add);
 
 module.exports = route;

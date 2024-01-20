@@ -45,4 +45,15 @@ describe('Products service test', function () {
     expect(data).to.be.an('object');
     expect(data).to.be.deep.equal({ message: 'Product not found' });
   });
+
+  it('The service can add an product', async function () {
+    simon.stub(productsModel, 'add').resolves({ id: 4, name: 'Calção do Hulk' });
+
+    const { status, data } = await productsService.add('Calção do Hulk');
+
+    expect(status).to.be.an('number');
+    expect(status).to.be.equal(201);
+    expect(data).to.be.an('object');
+    expect(data).to.be.deep.equal({ id: 4, name: 'Calção do Hulk' });
+  });
 });

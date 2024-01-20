@@ -24,9 +24,22 @@ const productIdRes = {
   name: 'Martelo de Thor',
 };
 
+const addProduct = [
+  {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 4,
+    info: '',
+    serverStatus: 2,
+    warningStatus: 0,
+  },
+  undefined,
+];
+
 module.exports = {
   allProductsData,
   allProductsRes,
   productIdData,
   productIdRes,
+  addProduct,
 };

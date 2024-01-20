@@ -30,4 +30,17 @@ describe('Products model test', function () {
     expect(response).to.be.an('object');
     expect(response).to.be.deep.equal(productsMock.productIdRes);
   });
+
+  it('The request can add one product', async function () {
+    sinon.stub(connection, 'execute')
+      .onFirstCall()
+      .resolves(productsMock.addProduct)
+      .onSecondCall()
+      .resolves([[{ id: 4, name: 'Calção do Hulk' }]]);
+
+    const response = await productsModel.add('Calção do Hulk');
+
+    expect(response).to.be.an('object');
+    expect(response).to.deep.equal({ id: 4, name: 'Calção do Hulk' });
+  });
 });
