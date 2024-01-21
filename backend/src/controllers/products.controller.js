@@ -22,8 +22,18 @@ const add = async (req, res) => {
   return res.status(status).json(data);
 };
 
+const update = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+
+  const { status, data } = await productsService.update(id, name);
+
+  return res.status(status).json(data);
+};
+
 module.exports = {
   findAll,
   findById,
   add,
+  update,
 };

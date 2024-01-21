@@ -11,4 +11,13 @@ route.get('/:id', productsController.findById);
 // POST
 route.post('/', bodyParser.json(), productsMiddleware.nameVerify, productsController.add);
 
+// PUT
+route.put(
+  '/:id',
+  bodyParser.json(),
+  productsMiddleware.nameVerify,
+  productsMiddleware.productVerify,
+  productsController.update,
+);
+
 module.exports = route;

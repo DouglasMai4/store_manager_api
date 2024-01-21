@@ -25,8 +25,15 @@ const add = async (name) => {
   return { status: 201, data };
 };
 
+const update = async (id, name) => {
+  const data = await productsModel.update(id, name);
+
+  return { status: 200, data };
+};
+
 module.exports = {
   findAll,
   findById,
   add,
+  update,
 };

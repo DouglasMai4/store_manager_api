@@ -24,7 +24,7 @@ describe('Sales service test', function () {
     expect(data).to.be.deep.equal(salesMock.allSalesRes);
   });
 
-  it('The service return one product by id with the correct status code', async function () {
+  it('The service return one sale by id with the correct status code', async function () {
     sinon.stub(salesModel, 'findById').resolves(salesMock.saleIdRes);
 
     const { status, data } = await salesService.findById(1);
@@ -33,5 +33,16 @@ describe('Sales service test', function () {
     expect(status).to.be.equal(200);
     expect(data).to.be.an('array');
     expect(data).to.be.deep.equal(salesMock.saleIdRes);
+  });
+
+  it('The service return the correct status code if no one sale id find', async function () {
+    sinon.stub(salesModel, 'findById').resolves([]);
+
+    const { status, data } = await salesService.findById(10);
+
+    expect(status).to.be.an('number');
+    expect(status).to.be.equal(404);
+    expect(data).to.be.an('object');
+    expect(data).to.be.deep.equal({ message: 'Sale not found' });
   });
 });

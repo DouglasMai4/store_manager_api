@@ -43,4 +43,35 @@ describe('Products model test', function () {
     expect(response).to.be.an('object');
     expect(response).to.deep.equal({ id: 4, name: 'Calção do Hulk' });
   });
+
+  it('The request can update one product', async function () {
+    sinon.stub(connection, 'execute')
+      .onFirstCall()
+      .resolves([[]])
+      .onSecondCall()
+      .resolves([[{ id: 1, name: 'StormBreaker' }]]);
+
+    const response = await productsModel.update(1, 'StormBreaker');
+
+    expect(response).to.be.an('object');
+    expect(response).to.be.deep.equal({ id: 1, name: 'StormBreaker' });
+  });
+
+  it('The request can verify if a product exists', async function () {
+    sinon.stub(connection, 'execute').resolves(productsMock.productIdData);
+
+    const response = await productsModel.verify(1);
+
+    expect(response).to.be.an('boolean');
+    expect(response).to.be.equal(true);
+  });
+
+  it('The request return false if product dosent exists', async function () {
+    sinon.stub(connection, 'execute').resolves([[]]);
+
+    const response = await productsModel.verify(10);
+
+    expect(response).to.be.an('boolean');
+    expect(response).to.be.equal(false);
+  });
 });
