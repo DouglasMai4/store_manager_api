@@ -67,4 +67,13 @@ describe('Products service test', function () {
     expect(data).to.be.an('object');
     expect(data).to.be.deep.equal({ id: 1, name: 'StormBreaker' });
   });
+
+  it('The service can delete a product', async function () {
+    sinon.stub(productsModel, 'deleteProduct').resolves(undefined);
+
+    const status = await productsService.deleteProduct(1);
+
+    expect(status).to.be.an('number');
+    expect(status).to.be.equal(204);
+  });
 });

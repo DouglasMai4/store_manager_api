@@ -41,6 +41,13 @@ const update = async (id, name) => {
   return product;
 };
 
+const deleteProduct = async (id) => {
+  await connection.execute(
+    'DELETE FROM products WHERE id = ?',
+    [id],
+  );
+};
+
 const verify = async (id) => {
   const productFind = await findById(id);
 
@@ -53,4 +60,5 @@ module.exports = {
   add,
   update,
   verify,
+  deleteProduct,
 };

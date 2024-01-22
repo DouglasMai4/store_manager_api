@@ -20,4 +20,12 @@ route.put(
   productsController.update,
 );
 
+// DELETE
+route.delete(
+  '/:id',
+  bodyParser.json(),
+  productsMiddleware.productVerify,
+  productsController.deleteProduct,
+);
+
 module.exports = route;

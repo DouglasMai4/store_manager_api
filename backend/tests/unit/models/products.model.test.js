@@ -74,4 +74,12 @@ describe('Products model test', function () {
     expect(response).to.be.an('boolean');
     expect(response).to.be.equal(false);
   });
+
+  it('The request can delete a product', async function () {
+    sinon.stub(connection, 'execute').resolves([[]]);
+
+    const response = await productsModel.deleteProduct(1);
+
+    expect(response).to.be.equal(undefined);
+  });
 });
