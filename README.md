@@ -48,11 +48,11 @@ Projeto de uma pequena **API Rest** para gerenciar produtos e vendas de uma loja
 
 Fui responsavel por criar as seguintes funcionalidades:
 
-*. Models
-*. Services
-*. Controllers
-*. Routes
-*. Middlewares
-*. Testes unitarios
+- Models
+- Services
+- Controllers
+- Routes
+- Middlewares
+- Testes unitarios
 
 O banco de dados e outros arquivos foram criados pela *Trybe*.
