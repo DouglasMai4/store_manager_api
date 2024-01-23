@@ -18,7 +18,7 @@ Projeto de uma pequena **API Rest** para gerenciar produtos e vendas de uma loja
 
 #### GET
 
-> `/products`: Lista todos os produtos registrados no banco de dados.
+> `/products`: Lista todos os produtos registrados no banco de dados.  
 > `/products/:id`: Lista um produto especifico de acordo com o seu ID.
 
 #### POST
@@ -32,6 +32,17 @@ Projeto de uma pequena **API Rest** para gerenciar produtos e vendas de uma loja
 #### DELETE
 
 > `/products/:id`: Deleta um produto registrado de acordo com o seu ID.
+
+### Vendas
+
+### GET
+
+> `/sales`: Lista todas as vendas registradas no banco de dados.  
+> `/sales/:id`: Lista uma venda expecifica de acordo com o seu ID.
+
+### POST
+
+> `/sales`: Adiciona uma venda, necessario passar um array com os produtos e suas quantidades: `[{ productId: 1, quantity: 2 }]`.
 
 ## Desenvolvimento
 
