@@ -30,4 +30,30 @@ describe('Test sales model', function () {
     expect(response).to.be.an('array');
     expect(response).to.be.deep.equal(salesMock.saleIdRes);
   });
+
+  it('The request can add a sale', async function () {
+    sinon.stub(connection, 'execute')
+      .onCall(0)
+      .resolves(salesMock.saleAdd.first)
+      .onCall(1)
+      .resolves(salesMock.saleAdd.second)
+      .onCall(2)
+      .resolves(salesMock.saleAdd.second)
+      .onCall(3)
+      .resolves(salesMock.saleAdd.third);
+
+    const response = await salesModel.add([
+      {
+        productId: 1,
+        quantity: 1,
+      },
+      {
+        productId: 2,
+        quantity: 5,
+      },
+    ]);
+
+    expect(response).to.be.an('object');
+    expect(response).to.be.deep.equal(salesMock.saleAdded);
+  });
 });

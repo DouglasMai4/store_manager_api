@@ -45,4 +45,24 @@ describe('Sales service test', function () {
     expect(data).to.be.an('object');
     expect(data).to.be.deep.equal({ message: 'Sale not found' });
   });
+
+  it('The service return the correct status code when add a sale', async function () {
+    sinon.stub(salesModel, 'add').resolves(salesMock.saleAdded);
+
+    const { status, data } = await salesService.add([
+      {
+        productId: 1,
+        quantity: 1,
+      },
+      {
+        productId: 2,
+        quantity: 5,
+      },
+    ]);
+
+    expect(status).to.be.an('number');
+    expect(status).to.be.equal(201);
+    expect(data).to.be.an('object');
+    expect(data).to.be.deep.equal(salesMock.saleAdded);
+  });
 });

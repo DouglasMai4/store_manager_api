@@ -68,9 +68,60 @@ const saleIdRes = [
   },
 ];
 
+const saleAdd = {
+  first: [
+    {
+      fieldCount: 0,
+      affectedRows: 1,
+      insertId: 3,
+      info: '',
+      serverStatus: 2,
+      warningStatus: 0,
+    },
+    undefined,
+  ],
+  second: [
+    {
+      fieldCount: 0,
+      affectedRows: 1,
+      insertId: 1,
+      info: '',
+      serverStatus: 2,
+      warningStatus: 0,
+    },
+    undefined,
+  ],
+  third: [[
+    {
+      productId: 1,
+      quantity: 1,
+    },
+    {
+      productId: 2,
+      quantity: 5,
+    },
+  ]],
+};
+
+const saleAdded = {
+  id: 3,
+  itemsSold: [
+    {
+      productId: 1,
+      quantity: 1,
+    },
+    {
+      productId: 2,
+      quantity: 5,
+    },
+  ],
+};
+
 module.exports = {
   allSalesData,
   allSalesRes,
   saleIdData,
   saleIdRes,
+  saleAdd,
+  saleAdded,
 };

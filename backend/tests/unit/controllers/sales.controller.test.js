@@ -45,4 +45,24 @@ describe('Test sales controller', function () {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(salesMock.saleIdRes);
   });
+
+  it('Test if the controller can add one sale', async function () {
+    const reqBody = [
+      { productId: 1, quantity: 1 },
+      { productId: 2, quantity: 5 },
+    ];
+
+    sinon.stub(salesService, 'add').resolves({ status: 201, data: salesMock.saleAdded });
+
+    const req = { params: {}, body: reqBody };
+    const res = {
+      status: sinon.stub().returnsThis(),
+      json: sinon.stub(),
+    };
+
+    await salesController.add(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith(salesMock.saleAdded);
+  });
 });
